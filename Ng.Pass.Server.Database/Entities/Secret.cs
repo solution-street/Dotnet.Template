@@ -4,8 +4,8 @@ using Ng.Pass.Server.Database.Interfaces;
 
 namespace Ng.Pass.Server.Database.Entities;
 
-[Table("Password", Schema = "pass")]
-public class Password : ITimestampedEntity
+[Table("Secret", Schema = "secret")]
+public class Secret : ITimestampedEntity
 {
     [Key]
     public Guid Id { get; set; }

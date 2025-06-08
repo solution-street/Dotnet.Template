@@ -5,8 +5,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Ng.Pass.Server.DataLayer.Configurations;
 using Ng.Pass.Server.DataLayer.Repositories;
 using Ng.Pass.Server.Services.Encryption.Services;
-using Ng.Pass.Server.Services.Passwords.Models;
-using Ng.Pass.Server.Services.Passwords.Services;
+using Ng.Pass.Server.Services.Secrets.Models;
+using Ng.Pass.Server.Services.Secrets.Services;
 
 namespace Ng.Pass.Server.Services.Configurations;
 
@@ -15,15 +15,15 @@ public static class ServiceCollectionExtensions
     public static void AddServices(this IServiceCollection services, IConfiguration configuration)
     {
         // Services
-        services.AddScoped<IPasswordService, PasswordService>();
+        services.AddScoped<ISecretService, SecretService>();
         services.AddScoped<IEncryptionService, EncryptionService>();
 
         // Repositories
-        services.AddScoped<IPasswordsRepository, PasswordsRepository>();
+        services.AddScoped<ISecretsRepository, SecretsRepository>();
 
         // Validators
-        services.AddScoped<IValidator<CreatePasswordRequest>, CreatePasswordRequestValidator>();
-        services.AddScoped<IValidator<RevealPasswordRequest>, RevealPasswordRequestValidator>();
+        services.AddScoped<IValidator<CreateSecretRequest>, CreateSecretRequestValidator>();
+        services.AddScoped<IValidator<RevealSecretRequest>, RevealSecretRequestValidator>();
 
         // Database(s)
         services.AddDbContext(configuration);

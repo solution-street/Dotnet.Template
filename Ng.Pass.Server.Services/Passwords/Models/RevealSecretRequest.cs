@@ -1,6 +1,6 @@
-namespace Ng.Pass.Server.Services.Passwords.Models;
+namespace Ng.Pass.Server.Services.Secrets.Models;
 
-public class RevealPasswordRequest
+public class RevealSecretRequest
 {
     public Guid Guid { get; set; }
     public string Passphrase { get; set; } = null!;

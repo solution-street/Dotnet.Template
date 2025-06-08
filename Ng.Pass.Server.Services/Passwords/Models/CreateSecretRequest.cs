@@ -1,6 +1,6 @@
-namespace Ng.Pass.Server.Services.Passwords.Models;
+namespace Ng.Pass.Server.Services.Secrets.Models;
 
-public class CreatePasswordRequest
+public class CreateSecretRequest
 {
     public string Secret { get; set; } = null!;
     public string Ttl { get; set; } = null!;

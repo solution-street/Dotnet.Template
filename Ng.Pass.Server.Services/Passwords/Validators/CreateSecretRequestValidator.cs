@@ -1,15 +1,15 @@
 using FluentValidation;
 using Ng.Pass.Server.Core.Enums;
 using Ng.Pass.Server.Core.Extensions;
-using Ng.Pass.Server.Services.Passwords.Models;
+using Ng.Pass.Server.Services.Secrets.Models;
 
 namespace EWA.CoreServices.Services.Users.Registration.Validators;
 
-public class CreatePasswordRequestValidator : AbstractValidator<CreatePasswordRequest>
+public class CreateSecretRequestValidator : AbstractValidator<CreateSecretRequest>
 {
     public const string InvalidTimeToLiveValue = "The 'Ttl' field was not recognized as a valid TimeToLive value.";
 
-    public CreatePasswordRequestValidator()
+    public CreateSecretRequestValidator()
     {
         RuleFor(x => x.Passphrase).NotEmpty().MinimumLength(3);
 

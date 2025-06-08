@@ -1,11 +1,11 @@
 using FluentValidation;
-using Ng.Pass.Server.Services.Passwords.Models;
+using Ng.Pass.Server.Services.Secrets.Models;
 
 namespace EWA.CoreServices.Services.Users.Registration.Validators;
 
-public class RevealPasswordRequestValidator : AbstractValidator<RevealPasswordRequest>
+public class RevealSecretRequestValidator : AbstractValidator<RevealSecretRequest>
 {
-    public RevealPasswordRequestValidator()
+    public RevealSecretRequestValidator()
     {
         RuleFor(x => x.Passphrase).NotEmpty().MinimumLength(3); // TODO: DRY
     }

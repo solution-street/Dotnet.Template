@@ -28,6 +28,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Controllers\Passwords\" />
+	  <Folder Include="Controllers\Secrets\" />
 	</ItemGroup>
 </Project>

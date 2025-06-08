@@ -13,7 +13,7 @@ public partial class NgPassContext : DbContext
     public NgPassContext(DbContextOptions<NgPassContext> options)
         : base(options) { }
 
-    public virtual DbSet<Password> Passwords { get; set; }
+    public virtual DbSet<Secret> Secrets { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
