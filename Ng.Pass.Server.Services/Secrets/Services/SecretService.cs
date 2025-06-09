@@ -2,8 +2,9 @@ using FluentValidation;
 using Ng.Pass.Server.Core.Enums;
 using Ng.Pass.Server.Core.Exceptions;
 using Ng.Pass.Server.Core.Extensions;
+using Ng.Pass.Server.Core.Models;
 using Ng.Pass.Server.Database.Entities;
-using Ng.Pass.Server.DataLayer.Repositories;
+using Ng.Pass.Server.DataLayer.Repositories.Secret;
 using Ng.Pass.Server.Services.Encryption.Services;
 using Ng.Pass.Server.Services.Secrets.MappingProfiles;
 using Ng.Pass.Server.Services.Secrets.Models;
@@ -14,14 +15,14 @@ public class SecretService : ISecretService
 {
     private readonly IEncryptionService _encryptionService;
 
-    private readonly ISecretsRepository _secretsRepository;
+    private readonly ISecretRepository _secretsRepository;
 
     private readonly IValidator<CreateSecretRequest> _createSecretValidator;
     private readonly IValidator<RevealSecretRequest> _revealSecretValidator;
 
     public SecretService(
         IEncryptionService encryptionService,
-        ISecretsRepository secretsRepository,
+        ISecretRepository secretsRepository,
         IValidator<CreateSecretRequest> createSecretValidator,
         IValidator<RevealSecretRequest> revealSecretValidator
     )
@@ -49,6 +50,8 @@ public class SecretService : ISecretService
     {
         ArgumentNullException.ThrowIfNull(request, nameof(request));
 
+        await _revealSecretValidator.ValidateAndThrowAsync(request);
+
         var secret = await _secretsRepository.TryGetByGuidAsync(request.Guid);
 
         if (secret == null)
@@ -71,6 +74,15 @@ public class SecretService : ISecretService
         await _secretsRepository.DeleteAsync(secret);
 
         return response;
+    }
+
+    public async Task<IEnumerable<SecretGridResponse>> GetSecretsCreatedByUser(BaseAuthenticatedRequest request)
+    {
+        ArgumentNullException.ThrowIfNull(request, nameof(request));
+
+        var secrets = await _secretsRepository.GetAllCreatedByUserAsync(request.Executor!.UserId);
+
+        return secrets.Select(secrets => secrets.ToGridResponse()).ToList();
     }
 
     private DateTime GetAtTheLatest(Secret secret)

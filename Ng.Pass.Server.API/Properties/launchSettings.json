@@ -17,10 +17,8 @@
         "environmentVariables": {
             "ASPNETCORE_ENVIRONMENT": "Development",
             "CLIENT_ORIGIN_URL": "https://localhost:4200,http://localhost:4200",
-            "BEARER_TOKEN_AUDIENCE": "JuEPPG7n3doYzXvNvhzktjF0EBpkBok1",
-            "BEARER_TOKEN_AUTHORITY": "https://dev-776q4p46nxckyot4.us.auth0.com/",
-            "AUTH0_API_URL": "https://dev-776q4p46nxckyot4.us.auth0.com",
-            "AUTH0_CLIENT_ID": "JuEPPG7n3doYzXvNvhzktjF0EBpkBok1"
+            "BEARER_TOKEN_AUDIENCE": "TtUU6M7qe9t6AHs78IwDOqkyvx7tKcQ9",
+            "BEARER_TOKEN_AUTHORITY": "https://dev-bsqg144ejnqmz325.us.auth0.com/"
         },
       "dotnetRunMessages": true,
       "applicationUrl": "https://localhost:7097;http://localhost:5053"

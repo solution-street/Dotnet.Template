@@ -1,6 +1,5 @@
 using Moq;
 using Ng.Pass.Server.API.Tests.Helpers;
-using Ng.Pass.Server.DataLayer.Clients.Auth0;
 
 namespace Ng.Pass.Server.API.Tests;
 
@@ -10,10 +9,10 @@ namespace Ng.Pass.Server.API.Tests;
 /// </summary>
 public class Dependencies
 {
-    public Mock<IAuth0Client> Auth0Client { get; private set; }
+    //public Mock<IAuth0Client> Auth0Client { get; private set; }
 
     public Dependencies()
     {
-        Auth0Client = MockHelper.GetAuth0ClientMock();
+        //Auth0Client = MockHelper.GetAuth0ClientMock();
     }
 }

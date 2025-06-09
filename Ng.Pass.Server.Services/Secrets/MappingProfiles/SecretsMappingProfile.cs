@@ -12,6 +12,7 @@ public static class SecretsMappingProfile
             Id = Guid.NewGuid(),
             Ttl = request.Ttl,
             Value = encryptedValue,
+            UserId = request.Executor?.UserId ?? null,
         };
     }
 
@@ -23,5 +24,15 @@ public static class SecretsMappingProfile
     public static RevealSecretResponse ToRevealResponse(this Secret secret, string decryptedValue)
     {
         return new RevealSecretResponse { Password = decryptedValue };
+    }
+
+    public static SecretGridResponse ToGridResponse(this Secret secret)
+    {
+        return new SecretGridResponse
+        {
+            Guid = secret.Id,
+            Ttl = secret.Ttl,
+            CreatedAt = secret.CreatedAt,
+        };
     }
 }

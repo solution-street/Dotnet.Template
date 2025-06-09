@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Clients\" />
     <Folder Include="Entities\" />
     <Folder Include="Specifications\" />
   </ItemGroup>

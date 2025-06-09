@@ -10,6 +10,9 @@ public class Secret : ITimestampedEntity
     [Key]
     public Guid Id { get; set; }
 
+    [ForeignKey("User")]
+    public Guid? UserId { get; set; }
+
     public string Value { get; set; } = null!;
 
     public string Ttl { get; set; } = null!;
@@ -17,4 +20,7 @@ public class Secret : ITimestampedEntity
     public DateTime CreatedAt { get; set; }
 
     public DateTime UpdatedAt { get; set; }
+
+    [InverseProperty(nameof(User.Secrets))]
+    public virtual User? User { get; set; }
 }

@@ -2,6 +2,7 @@ using EWA.Coordination.Common.Logic.Extensions;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using Ng.Pass.Server.API.filters;
 using Ng.Pass.Server.API.Helpers;
 using Ng.Pass.Server.API.Middleware;
 using Ng.Pass.Server.Core.Configuration;
@@ -57,8 +58,8 @@ public class Startup
                 new OpenApiInfo
                 {
                     Version = "v1",
-                    Title = "Cevo API",
-                    Description = "API for Cevo Application"
+                    Title = "Ng Pass API",
+                    Description = "API for Ng Pass"
                 }
             );
             // To Enable authorization using Swagger (JWT)
@@ -127,6 +128,7 @@ public class Startup
         // API project service registrations
 
         // Filters
+        services.AddScoped<SetExecutorFilter>();
 
         services.AddHttpClient();
 

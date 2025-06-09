@@ -4,7 +4,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>55e2495a-9921-4e40-9d87-22d1a3f30779</UserSecretsId>
+    <UserSecretsId>796b95c3-253e-4120-a455-b99e31967756</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -24,10 +24,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Ng.Pass.Server.Core\Ng.Pass.Server.Core.csproj" />
     <ProjectReference Include="..\Ng.Pass.Server.Services\Ng.Pass.Server.Services.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="filters\" />
   </ItemGroup>
 
   <!-- set HUSKY to 0 in CI/CD disable this -->
