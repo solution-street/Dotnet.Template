@@ -8,6 +8,7 @@ using Ng.Pass.Server.API.Middleware;
 using Ng.Pass.Server.Core.Configuration;
 using Ng.Pass.Server.Database.Contexts;
 using Ng.Pass.Server.Services.Configurations;
+using Ng.Pass.Server.Services.Secrets.Hubs;
 
 namespace Ng.Pass.Server.API;
 
@@ -116,6 +117,7 @@ public class Startup
         {
             options.ModelMetadataDetailsProviders.Add(new IgnoreValidationMetadataProvider());
         });
+        services.AddSignalR();
         services.AddEndpointsApiExplorer();
     }
 
@@ -162,12 +164,20 @@ public class Startup
     {
         app.UseHttpsRedirection();
         app.UseRouting();
-        app.UseCors("AllowSpecificOrigin");
+        app.UseCors(builder =>
+            builder
+                .WithOrigins("http://localhost:4200") // Your Angular app URL
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .AllowCredentials() // Important for SignalR
+        );
         app.UseAuthentication();
         app.UseAuthorization();
+
         app.UseEndpoints(endpoints =>
         {
             endpoints.MapControllers();
+            endpoints.MapHub<SecretsHub>("/hubs/secrets");
         });
     }
 }
