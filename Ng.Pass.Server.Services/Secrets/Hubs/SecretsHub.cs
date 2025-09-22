@@ -1,32 +1,47 @@
 using Microsoft.AspNetCore.SignalR;
 using Ng.Pass.Server.Core.Models;
+using Ng.Pass.Server.Services.Secrets.Constants;
 using Ng.Pass.Server.Services.Secrets.Services;
+using Ng.Pass.Server.Services.Shared.Attributes;
+using Ng.Pass.Server.Services.Shared.Services;
 
 namespace Ng.Pass.Server.Services.Secrets.Hubs;
 
+[HubRoute("/hubs/secrets")]
 public class SecretsHub : Hub
 {
-    public readonly string HubName = "SecretsHub";
-
     private readonly ISecretService _secretService;
+    private readonly IExecutorService _executorService;
 
-    public SecretsHub(ISecretService secretService)
+    public SecretsHub(ISecretService secretService, IExecutorService executorService)
     {
-        _secretService = secretService;
+        _secretService = secretService ?? throw new ArgumentNullException(nameof(secretService));
+        _executorService = executorService ?? throw new ArgumentNullException(nameof(executorService));
     }
 
     public async Task RequestSecretsList()
     {
         try
         {
-            BaseAuthenticatedRequest request = new BaseAuthenticatedRequest
+            var userContext = Context.User;
+
+            if (userContext is null)
             {
-                Executor = new Executor(new Guid("14c6de87-6202-426f-8c28-ba013d61c9ad"))
-            };
+                throw new InvalidOperationException("User is not authenticated.");
+            }
+
+            var executor = await _executorService.TryGet(userContext);
+
+            if (executor is null)
+            {
+                throw new InvalidOperationException("Executor not found for the authenticated user.");
+            }
+
+            BaseAuthenticatedRequest request = new BaseAuthenticatedRequest { Executor = executor };
 
             var secrets = await _secretService.GetSecretsCreatedByUser(request);
 
-            await Clients.Caller.SendAsync("SecretsListReceived", secrets);
+            await Clients.Caller.SendAsync(SecretHubConstants.Events.ListRecieved, secrets);
         }
         catch (Exception ex)
         {
@@ -36,12 +51,12 @@ public class SecretsHub : Hub
 
     public async Task JoinSecretsGroup()
     {
-        await Groups.AddToGroupAsync(Context.ConnectionId, "SecretsGroup");
+        await Groups.AddToGroupAsync(Context.ConnectionId, SecretHubConstants.GroupName);
     }
 
     public async Task LeaveSecretsGroup()
     {
-        await Groups.RemoveFromGroupAsync(Context.ConnectionId, "SecretsGroup");
+        await Groups.RemoveFromGroupAsync(Context.ConnectionId, SecretHubConstants.GroupName);
     }
 
     public override async Task OnConnectedAsync()
@@ -58,11 +73,11 @@ public class SecretsHub : Hub
 
     public async Task NotifySecretCreated(object secretData)
     {
-        await Clients.Group("SecretsGroup").SendAsync("SecretCreated", secretData);
+        await Clients.Group(SecretHubConstants.GroupName).SendAsync(SecretHubConstants.Events.SecretCreated, secretData);
     }
 
     public async Task NotifySecretDeleted(int secretId)
     {
-        await Clients.Group("SecretsGroup").SendAsync("SecretDeleted", secretId);
+        await Clients.Group(SecretHubConstants.GroupName).SendAsync(SecretHubConstants.Events.SecretDeleted, secretId);
     }
 }

@@ -1,11 +1,9 @@
-using EWA.Coordination.Common.Logic.Extensions;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using Ng.Pass.Server.API.filters;
 using Ng.Pass.Server.API.Helpers;
 using Ng.Pass.Server.API.Middleware;
-using Ng.Pass.Server.Core.Configuration;
 using Ng.Pass.Server.Database.Contexts;
 using Ng.Pass.Server.Services.Configurations;
 using Ng.Pass.Server.Services.Secrets.Hubs;
@@ -177,7 +175,7 @@ public class Startup
         app.UseEndpoints(endpoints =>
         {
             endpoints.MapControllers();
-            endpoints.MapHub<SecretsHub>("/hubs/secrets");
+            endpoints.MapHubs();
         });
     }
 }
