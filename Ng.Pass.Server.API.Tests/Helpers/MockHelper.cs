@@ -1,5 +1,3 @@
-using Moq;
-
 namespace Ng.Pass.Server.API.Tests.Helpers;
 
 public class MockHelper

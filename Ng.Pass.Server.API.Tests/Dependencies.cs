@@ -1,6 +1,3 @@
-using Moq;
-using Ng.Pass.Server.API.Tests.Helpers;
-
 namespace Ng.Pass.Server.API.Tests;
 
 /// <summary>

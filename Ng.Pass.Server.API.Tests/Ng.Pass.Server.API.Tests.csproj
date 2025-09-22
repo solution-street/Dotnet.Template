@@ -26,8 +26,4 @@
 	  <ProjectReference Include="..\Ng.Pass.Server.API\Ng.Pass.Server.API.csproj" />
 	  <ProjectReference Include="..\Ng.Pass.Server.Common.Tests\Ng.Pass.Server.Common.Tests.csproj" />
 	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="Controllers\Secrets\" />
-	</ItemGroup>
 </Project>

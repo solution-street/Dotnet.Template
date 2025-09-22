@@ -5,8 +5,7 @@ using Ng.Pass.Server.API;
 using Ng.Pass.Server.API.Responses;
 using Ng.Pass.Server.API.Tests;
 using Ng.Pass.Server.API.Tests.Helpers;
-using Ng.Pass.Server.Common.Tests;
-using Ng.Pass.Server.Core.Enums;
+using Ng.Pass.Server.Database.Contexts;
 
 /// <summary>
 /// All integration tests should inherit from this class. This class will configure all necessary behavior to perform API calls
@@ -16,7 +15,7 @@ public abstract class BaseTests : IDisposable
 {
     protected abstract string _controllerRoute { get; }
 
-    //protected CoordinationContext Context { get; private set; }
+    protected NgPassContext Context { get; private set; }
     protected Dependencies Dependencies { get; private set; }
 
     /// <summary>
@@ -39,8 +38,8 @@ public abstract class BaseTests : IDisposable
 
         _scope = _factory.Services.CreateScope();
         {
-            //Context = _scope.ServiceProvider.GetRequiredService<CoordinationContext>();
-            //Context.Database.EnsureCreated();
+            Context = _scope.ServiceProvider.GetRequiredService<NgPassContext>();
+            Context.Database.EnsureCreated();
         }
 
         UpsertExecutingUserInDatabase();

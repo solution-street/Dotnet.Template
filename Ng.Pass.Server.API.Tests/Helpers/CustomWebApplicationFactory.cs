@@ -1,11 +1,9 @@
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Ng.Pass.Server.API.Tests;
 using Ng.Pass.Server.Common.Tests;
-using Ng.Pass.Server.Core.Configuration;
 
 public class CustomWebApplicationFactory<TStartup> : WebApplicationFactory<TStartup>
     where TStartup : class
@@ -24,7 +22,7 @@ public class CustomWebApplicationFactory<TStartup> : WebApplicationFactory<TStar
 
             ReplaceDbContext(services);
 
-            services.AddScoped(_ => Dependencies.Auth0Client.Object);
+            //services.AddScoped(_ => Dependencies.Auth0Client.Object);
 
             var sp = services.BuildServiceProvider();
             //using (var scope = sp.CreateScope())

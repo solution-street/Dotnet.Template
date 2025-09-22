@@ -1,4 +1,3 @@
-using System;
 using Microsoft.AspNetCore.Mvc;
 using Ng.Pass.Server.Core.Models;
 using Ng.Pass.Server.Services.Secrets.Models;
@@ -7,7 +6,7 @@ using Ng.Pass.Server.Services.Shared.Services;
 
 namespace Ng.Pass.Server.API.Controllers;
 
-[Route("api/[controller]")]
+[Route("api/secrets")]
 [ApiController]
 public class SecretsController : BaseController
 {
