@@ -1,4 +1,4 @@
-# Ng.Pass.Server
+# Dotnet.Template.Server
 
 ## Testing
 Naming conventions for xUnit tests:
@@ -11,21 +11,30 @@ https://learn.microsoft.com/en-us/dotnet/core/testing/unit-testing-best-practice
 - [Visual Studio](https://visualstudio.microsoft.com/) or any other C# development environment.
 
 ### Environment variables
-TODO:
+"ASPNETCORE_ENVIRONMENT": "Development",
+
+- If you want auth0:
+"CLIENT_ORIGIN_URL": "https://localhost:4200,http://localhost:4200",
+"BEARER_TOKEN_AUDIENCE": "yourauth0audience",
+"BEARER_TOKEN_AUTHORITY": "https://dev-yourdomain.us.auth0.com/"
 
 ### User Secrets
-TODO:
+Create a database and add your connection string to your user secrets.
 
 If you followed the steps above you should have the following set:
 secrets.json:
 ```
-{}
+{
+  "ConnectionStrings": {
+    "DATABASE_LABEL": "Server=...;Database=...;Trusted_Connection=True;TrustServerCertificate=True;"
+  }
+}
 ```
 
 ## Setup
 ### Clone the Repsitory
    ```bash
-   git clone TODO
+   git clone https://github.com/solution-street/Dotnet.Template.git
   ```
 
 ### Starting the Application

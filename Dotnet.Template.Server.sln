@@ -1,0 +1,80 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34525.116
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{AFDB4535-5273-45FA-A208-41EBA51CCA87}"
+	ProjectSection(SolutionItems) = preProject
+		Directory.Packages.props = Directory.Packages.props
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{F45E4A14-D6FD-4E61-918D-541F5678CF46}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dotnet.Template.Server.API.Tests", "Dotnet.Template.Server.API.Tests\Dotnet.Template.Server.API.Tests.csproj", "{02BA11B5-DE15-FFC9-3C46-EAB1CA30B0AC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dotnet.Template.Server.Common.Tests", "Dotnet.Template.Server.Common.Tests\Dotnet.Template.Server.Common.Tests.csproj", "{048789BB-B10D-E072-B957-3D3CFD6EAAC0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dotnet.Template.Server.Services.Tests", "Dotnet.Template.Server.Services.Tests\Dotnet.Template.Server.Services.Tests.csproj", "{0E293572-AD94-B75F-D519-EEE31DF3D413}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dotnet.Template.Server.API", "Dotnet.Template.Server.API\Dotnet.Template.Server.API.csproj", "{D2F789EC-8EAA-A10F-D84A-FA442230D1FA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dotnet.Template.Server.Core", "Dotnet.Template.Server.Core\Dotnet.Template.Server.Core.csproj", "{B60AE127-D58D-21AC-FC6A-DDCDE522A831}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dotnet.Template.Server.Database", "Dotnet.Template.Server.Database\Dotnet.Template.Server.Database.csproj", "{3E59E074-D84A-A95F-680E-A71CDBC910DD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dotnet.Template.Server.DataLayer", "Dotnet.Template.Server.DataLayer\Dotnet.Template.Server.DataLayer.csproj", "{CE1990C6-CA2A-EE40-F369-83936130DFC4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dotnet.Template.Server.Services", "Dotnet.Template.Server.Services\Dotnet.Template.Server.Services.csproj", "{6B7B4005-B598-EE1C-0C21-CBAD1A88B621}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{02BA11B5-DE15-FFC9-3C46-EAB1CA30B0AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02BA11B5-DE15-FFC9-3C46-EAB1CA30B0AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02BA11B5-DE15-FFC9-3C46-EAB1CA30B0AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02BA11B5-DE15-FFC9-3C46-EAB1CA30B0AC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{048789BB-B10D-E072-B957-3D3CFD6EAAC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{048789BB-B10D-E072-B957-3D3CFD6EAAC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{048789BB-B10D-E072-B957-3D3CFD6EAAC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{048789BB-B10D-E072-B957-3D3CFD6EAAC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E293572-AD94-B75F-D519-EEE31DF3D413}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E293572-AD94-B75F-D519-EEE31DF3D413}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E293572-AD94-B75F-D519-EEE31DF3D413}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E293572-AD94-B75F-D519-EEE31DF3D413}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2F789EC-8EAA-A10F-D84A-FA442230D1FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2F789EC-8EAA-A10F-D84A-FA442230D1FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2F789EC-8EAA-A10F-D84A-FA442230D1FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2F789EC-8EAA-A10F-D84A-FA442230D1FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B60AE127-D58D-21AC-FC6A-DDCDE522A831}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B60AE127-D58D-21AC-FC6A-DDCDE522A831}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B60AE127-D58D-21AC-FC6A-DDCDE522A831}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B60AE127-D58D-21AC-FC6A-DDCDE522A831}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E59E074-D84A-A95F-680E-A71CDBC910DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E59E074-D84A-A95F-680E-A71CDBC910DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E59E074-D84A-A95F-680E-A71CDBC910DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E59E074-D84A-A95F-680E-A71CDBC910DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE1990C6-CA2A-EE40-F369-83936130DFC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE1990C6-CA2A-EE40-F369-83936130DFC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE1990C6-CA2A-EE40-F369-83936130DFC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE1990C6-CA2A-EE40-F369-83936130DFC4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B7B4005-B598-EE1C-0C21-CBAD1A88B621}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B7B4005-B598-EE1C-0C21-CBAD1A88B621}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B7B4005-B598-EE1C-0C21-CBAD1A88B621}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B7B4005-B598-EE1C-0C21-CBAD1A88B621}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{02BA11B5-DE15-FFC9-3C46-EAB1CA30B0AC} = {F45E4A14-D6FD-4E61-918D-541F5678CF46}
+		{048789BB-B10D-E072-B957-3D3CFD6EAAC0} = {F45E4A14-D6FD-4E61-918D-541F5678CF46}
+		{0E293572-AD94-B75F-D519-EEE31DF3D413} = {F45E4A14-D6FD-4E61-918D-541F5678CF46}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1A9DBA56-6A3D-46B1-B8EC-724D94817E29}
+	EndGlobalSection
+EndGlobal
