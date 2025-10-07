@@ -3,8 +3,6 @@ using Dotnet.Template.Server.API.Helpers;
 using Dotnet.Template.Server.API.Middleware;
 using Dotnet.Template.Server.Database.Contexts;
 using Dotnet.Template.Server.Services.Configurations;
-using Dotnet.Template.Server.Services.Secrets.Hubs;
-using Dotnet.Template.Server.Services.Shared.Extensions;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
@@ -176,7 +174,6 @@ public class Startup
         app.UseEndpoints(endpoints =>
         {
             endpoints.MapControllers();
-            endpoints.MapHub<SecretsHub>(HubRouteExtensions.GetHubRoute<SecretsHub>());
         });
     }
 }

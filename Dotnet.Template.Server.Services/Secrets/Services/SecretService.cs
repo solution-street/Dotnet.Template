@@ -1,5 +1,3 @@
-using FluentValidation;
-using Microsoft.AspNetCore.SignalR;
 using Dotnet.Template.Server.Core.Enums;
 using Dotnet.Template.Server.Core.Exceptions;
 using Dotnet.Template.Server.Core.Extensions;
@@ -7,9 +5,9 @@ using Dotnet.Template.Server.Core.Models;
 using Dotnet.Template.Server.Database.Entities;
 using Dotnet.Template.Server.DataLayer.Repositories.Secret;
 using Dotnet.Template.Server.Services.Encryption.Services;
-using Dotnet.Template.Server.Services.Secrets.Hubs;
 using Dotnet.Template.Server.Services.Secrets.MappingProfiles;
 using Dotnet.Template.Server.Services.Secrets.Models;
+using FluentValidation;
 
 namespace Dotnet.Template.Server.Services.Secrets.Services;
 
@@ -22,21 +20,17 @@ public class SecretService : ISecretService
     private readonly IValidator<CreateSecretRequest> _createSecretValidator;
     private readonly IValidator<RevealSecretRequest> _revealSecretValidator;
 
-    private readonly IHubContext<SecretsHub> _hubContext;
-
     public SecretService(
         IEncryptionService encryptionService,
         ISecretRepository secretsRepository,
         IValidator<CreateSecretRequest> createSecretValidator,
-        IValidator<RevealSecretRequest> revealSecretValidator,
-        IHubContext<SecretsHub> hubContext
+        IValidator<RevealSecretRequest> revealSecretValidator
     )
     {
         _encryptionService = encryptionService ?? throw new ArgumentNullException(nameof(encryptionService));
         _secretsRepository = secretsRepository ?? throw new ArgumentNullException(nameof(secretsRepository));
         _createSecretValidator = createSecretValidator ?? throw new ArgumentNullException(nameof(createSecretValidator));
         _revealSecretValidator = revealSecretValidator ?? throw new ArgumentNullException(nameof(revealSecretValidator));
-        _hubContext = hubContext ?? throw new ArgumentNullException(nameof(hubContext));
     }
 
     public async Task<CreateSecretResponse> CreateSecret(CreateSecretRequest request)
@@ -48,8 +42,6 @@ public class SecretService : ISecretService
         string encryptedValue = _encryptionService.Encrypt(request.Secret, request.Passphrase);
 
         var secret = await _secretsRepository.CreateAsync(request.ToEntity(encryptedValue));
-
-        await _hubContext.Clients.Group("SecretsGroup").SendAsync("SecretCreated", new { secret.Id });
 
         return secret.ToCreateResponse();
     }
@@ -80,8 +72,6 @@ public class SecretService : ISecretService
         var response = secret.ToRevealResponse(decryptedValue);
 
         await _secretsRepository.DeleteAsync(secret);
-
-        await _hubContext.Clients.Group("SecretsGroup").SendAsync("SecretDeleted", new { secret.Id });
 
         return response;
     }
