@@ -1,4 +1,3 @@
-using EWA.Coordination.Common.Logic.Extensions;
 using Ng.Pass.Server.Core.Configuration;
 
 namespace Ng.Pass.Server.API.Helpers;
@@ -26,7 +25,7 @@ public static class EnvironmentVariableHelper
 
     public static bool IsDevelopment()
     {
-        return GetEnvironmentName().EqualsIgnoreCasing(AppConstants.Environment.Development);
+        return GetEnvironmentName() == AppConstants.Environment.Development;
     }
 
     private static string GetEnvironmentVariableValue(string key)

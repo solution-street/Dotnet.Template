@@ -1,4 +1,3 @@
-using EWA.CoreServices.Services.Users.Registration.Validators;
 using FluentValidation;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -9,6 +8,7 @@ using Ng.Pass.Server.Services.Encryption.Services;
 using Ng.Pass.Server.Services.Secrets.Models;
 using Ng.Pass.Server.Services.Secrets.Services;
 using Ng.Pass.Server.Services.Shared.Services;
+using Ng.Pass.Server.Services.Users.Registration.Validators;
 
 namespace Ng.Pass.Server.Services.Configurations;
 

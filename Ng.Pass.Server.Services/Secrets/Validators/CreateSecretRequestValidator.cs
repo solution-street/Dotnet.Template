@@ -3,7 +3,7 @@ using Ng.Pass.Server.Core.Enums;
 using Ng.Pass.Server.Core.Extensions;
 using Ng.Pass.Server.Services.Secrets.Models;
 
-namespace EWA.CoreServices.Services.Users.Registration.Validators;
+namespace Ng.Pass.Server.Services.Users.Registration.Validators;
 
 public class CreateSecretRequestValidator : AbstractValidator<CreateSecretRequest>
 {

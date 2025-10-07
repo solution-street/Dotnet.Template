@@ -7,6 +7,7 @@ using Ng.Pass.Server.API.Middleware;
 using Ng.Pass.Server.Database.Contexts;
 using Ng.Pass.Server.Services.Configurations;
 using Ng.Pass.Server.Services.Secrets.Hubs;
+using Ng.Pass.Server.Services.Shared.Extensions;
 
 namespace Ng.Pass.Server.API;
 
@@ -175,7 +176,7 @@ public class Startup
         app.UseEndpoints(endpoints =>
         {
             endpoints.MapControllers();
-            endpoints.MapHubs();
+            endpoints.MapHub<SecretsHub>(HubRouteExtensions.GetHubRoute<SecretsHub>());
         });
     }
 }

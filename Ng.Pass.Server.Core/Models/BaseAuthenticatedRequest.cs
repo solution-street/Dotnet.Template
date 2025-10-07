@@ -7,5 +7,5 @@ public class BaseAuthenticatedRequest
 {
     [JsonIgnore]
     [IgnoreValidation]
-    public Executor Executor { get; set; } = null;
+    public Executor Executor { get; set; } = null!;
 }

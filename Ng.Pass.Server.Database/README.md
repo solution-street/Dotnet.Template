@@ -1,4 +1,4 @@
-# EWA Coordination API
+# API
 
 ## Create a local database
 Prerequisites: 

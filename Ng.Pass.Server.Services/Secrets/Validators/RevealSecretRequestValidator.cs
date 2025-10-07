@@ -1,7 +1,7 @@
 using FluentValidation;
 using Ng.Pass.Server.Services.Secrets.Models;
 
-namespace EWA.CoreServices.Services.Users.Registration.Validators;
+namespace Ng.Pass.Server.Services.Users.Registration.Validators;
 
 public class RevealSecretRequestValidator : AbstractValidator<RevealSecretRequest>
 {
